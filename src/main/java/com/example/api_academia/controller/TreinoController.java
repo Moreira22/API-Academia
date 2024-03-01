@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import java.util.List;
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,6 +28,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/api/treino")
 @AllArgsConstructor
 public class TreinoController {
+    
+    @Autowired
     private final TreinoRepository treinoRepository;
 
     // ============================GET============================
