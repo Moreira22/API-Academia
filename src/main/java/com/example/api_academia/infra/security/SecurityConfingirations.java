@@ -29,12 +29,7 @@ public class SecurityConfingirations {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/treino").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/treino/ALL").permitAll()
-                        .requestMatchers(HttpMethod.PUT, "/api/treino").permitAll()
-                        .requestMatchers(HttpMethod.DELETE, "/api/treino").permitAll()
-                        .requestMatchers(HttpMethod.DELETE, "/api/treino/active/ ").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/user").hasRole("ADMIN")
+                        // .requestMatchers(HttpMethod.POST, "/api/user").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(secretFilter, UsernamePasswordAuthenticationFilter.class)

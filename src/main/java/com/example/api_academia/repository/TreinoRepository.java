@@ -11,4 +11,5 @@ import com.example.api_academia.model.Treino;
 public interface TreinoRepository extends JpaRepository<Treino, Long>{
     List<Treino> findByActiveTrue();
     List<Treino> getByNome(String nome);
+  
 }

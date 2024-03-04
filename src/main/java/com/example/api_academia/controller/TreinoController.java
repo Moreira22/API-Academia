@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.api_academia.Request.RequestTreino;
 import com.example.api_academia.model.Treino;
+import com.example.api_academia.model.User;
 import com.example.api_academia.repository.TreinoRepository;
 
 import jakarta.validation.Valid;
@@ -23,6 +24,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("/api/treino")
@@ -54,21 +57,26 @@ public class TreinoController {
     public @ResponseBody List<Treino> getAll(@PathVariable String nome) {
         return treinoRepository.getByNome(nome);
     }
+    
     // =============================================================
 
     // ============================POST============================
-    @PostMapping
-    public ResponseEntity<Treino> postTreino(@RequestBody @Valid RequestTreino data) {
-        Treino newTreino = new Treino(data);
+    @PostMapping("/{id}")
+    public ResponseEntity<Treino> postTreino(@PathVariable User id,@RequestBody @Valid RequestTreino data) {
+        Treino newTreino = new Treino();
+        newTreino.setNome(data.nome());
+        newTreino.setDescricao(data.descricao());
+        newTreino.setUser(id);
         treinoRepository.save(newTreino);
         return ResponseEntity.status(HttpStatus.CREATED).body(newTreino);
     }
 
-    @PostMapping("/ALL")
-    public ResponseEntity<List<Treino>> postALLTreino(@RequestBody @Valid List<RequestTreino> data) {
+    @PostMapping("/ALL/{id}")
+    public ResponseEntity<List<Treino>> postALLTreino(@PathVariable User id,@RequestBody @Valid List<RequestTreino> data) {
         List<Treino> newTreinos = new ArrayList<Treino>();
         for (RequestTreino requestTreino : data) {
             Treino newTreino = new Treino(requestTreino);
+            newTreino.setUser(id);
             treinoRepository.save(newTreino);
             newTreinos.add(newTreino);
         }

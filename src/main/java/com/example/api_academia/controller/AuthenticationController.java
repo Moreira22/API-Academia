@@ -42,7 +42,7 @@ public class AuthenticationController {
     
 
     @PostMapping("/register")
-    public ResponseEntity register(@RequestBody @Valid RequestRegister data) {
+    public ResponseEntity<User> register(@RequestBody @Valid RequestRegister data) {
         if(this.repository.findByLogin(data.login()) != null)
             return ResponseEntity.ok().build();
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
