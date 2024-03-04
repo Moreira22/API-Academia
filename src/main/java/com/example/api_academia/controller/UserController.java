@@ -39,7 +39,8 @@ public class UserController {
     @GetMapping()
     public @ResponseBody List<User> getActive() {
         return userRepository.findByActiveTrue();
-    }    
+    }  
+      
 
     @GetMapping("/{id}")
     public ResponseEntity<User> getById(@PathVariable Long id) {

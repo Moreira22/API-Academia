@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @RequestMapping("auth")
 public class AuthenticationController {
-     @Autowired
+    @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
     private UserRepository repository;
@@ -37,7 +37,7 @@ public class AuthenticationController {
         var usernamePassoword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
         var auth = this.authenticationManager.authenticate(usernamePassoword);
         var token = tokenService.generateToken((User) auth.getPrincipal());
-        return ResponseEntity.ok( new RequestLoginResponse(token));
+        return ResponseEntity.ok( new RequestLoginResponse(token, data.login()));
     }
     
 
