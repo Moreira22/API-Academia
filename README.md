@@ -106,10 +106,6 @@ POST /api/exercicio/Id_treino
 }
 ```
 
-## Contribuição
-
-Contribuições são bem-vindas. Sinta-se à vontade para abrir issues para reportar problemas, sugestões ou melhorias.
-
 ## Licença
 
 Este projeto está licenciado sob a [MIT License](LICENSE).
