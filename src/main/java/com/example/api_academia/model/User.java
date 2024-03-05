@@ -3,6 +3,7 @@ package com.example.api_academia.model;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -88,6 +89,10 @@ public class User implements UserDetails{
     @Override
     public boolean isEnabled() {
         return true;
+    }
+    public Optional<User> map(Object object) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'map'");
     }
    
 
